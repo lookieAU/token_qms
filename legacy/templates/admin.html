@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <h2>Add Department</h2>
+    <form action="/add_department" method="POST">
+        <label for="department_name">Department Name:</label>
+        <input type="text" id="department_name" name="department_name" required>
+        <br>
+        <button type="submit">Add Department</button>
+    </form>
+    <h2>All Tokens</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Token ID</th>
+                <th>Department</th>
+                <th>Patient Name</th>
+                <th>Appointment Date</th>
+                <th>Issue Time</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for token in tokens %}
+            <tr>
+                <td>{{ token[0] }}</td>
+                <td>{{ token[1] }}</td>
+                <td>{{ token[2] }}</td>
+                <td>{{ token[3] }}</td>
+                <td>{{ token[4] }}</td>
+                <td>{{ token[5] }}</td>
+                <td>
+                    <a href="/delete_token/{{ token[0] }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="/">Go to Home Page</a>
+</body>
+</html>

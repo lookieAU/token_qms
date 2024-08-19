@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Token</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Your Appointment Token</h1>
+    {% if token %}
+    <p><strong>Token Number:</strong> {{ token[0] }}</p>
+    <p><strong>Department:</strong> {{ token[1] }}</p>
+    <p><strong>Patient Name:</strong> {{ token[2] }}</p>
+    <p><strong>Appointment Date:</strong> {{ token[3] }}</p>
+    {% else %}
+    <p>Token not found.</p>
+    {% endif %}
+    <br>
+</body>
+</html>

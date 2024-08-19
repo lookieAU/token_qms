@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Terminal - {{ department[1] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Doctor Terminal - {{ department[1] }}</h1>
+    {% if current_token %}
+        <h2>Current Token</h2>
+        <p>Token ID: {{ current_token[0] }}</p>
+        <p>Patient Name: {{ current_token[2] }}</p>
+        <p>Issue Time: {{ current_token[3] }}</p>
+        <p>Start Time: {{ current_token[4] }}</p>
+        <button onclick="location.href='/close_token/{{ current_token[0] }}?department_id={{ department[0] }}'">Close Current Token</button>
+    {% else %}
+        <p>No current token in progress.</p>
+    {% endif %}
+    {% if next_token %}
+        <h2>Next Token</h2>
+        <p>Token ID: {{ next_token[0] }}</p>
+        <p>Patient Name: {{ next_token[2] }}</p>
+        <button onclick="location.href='/start_token/{{ next_token[0] }}?department_id={{ department[0] }}'">Start Next Token</button>
+    {% else %}
+        <p>No more tokens in the queue.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Token Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Token Progress</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Patient Name</th>
+                <th>Issue Time</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+                <th>Token Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for token in current_tokens %}
+                <tr>
+                    <td>{{ token[0] }}</td>
+                    <td>{{ token[1] }}</td>
+                    <td>{{ token[2] }}</td>
+                    <td>{{ token[3] }}</td>
+                    <td>{{ token[4] }}</td>
+                    <td>{{ token[6] }}</td>
+                    <td>{{token[7]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br />
+</body>
+</html>
